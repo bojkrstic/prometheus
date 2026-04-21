@@ -1,0 +1,27 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: telegram-notifications
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 1h
+
+receivers:
+  - name: telegram-notifications
+    telegram_configs:
+      - bot_token: 8731478854:AAFhZVhcmG9Nhgl7C3lSQQA86S7YYjhG2n4
+        chat_id: 8439886581
+        parse_mode: HTML
+        message: |
+          <b>Prometheus alert</b>
+          <b>Alert:</b> {{ .CommonLabels.alertname }}
+          <b>Severity:</b> {{ .CommonLabels.severity }}
+          <b>Target:</b> {{ .CommonLabels.instance }}
+          <b>Status:</b> {{ .Status }}
+          {{- if .CommonAnnotations.summary }}
+          <b>Summary:</b> {{ .CommonAnnotations.summary }}
+          {{- end }}
+          {{- if .CommonAnnotations.description }}
+          <b>Description:</b> {{ .CommonAnnotations.description }}
+          {{- end }}

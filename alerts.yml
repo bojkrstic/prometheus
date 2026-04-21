@@ -1,0 +1,29 @@
+groups:
+  - name: website-monitoring
+    rules:
+      - alert: WebsiteDown
+        expr: probe_success == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Website is down"
+          description: "Probe failed for {{ $labels.instance }} for more than 1 minute."
+
+      - alert: WebsiteSlowResponse
+        expr: probe_duration_seconds > 2
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Website response is slow"
+          description: "Response time for {{ $labels.instance }} is above 2 seconds for more than 2 minutes."
+
+      - alert: WebsiteUnexpectedStatusCode
+        expr: probe_http_status_code < 200 or probe_http_status_code >= 400
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Website returns unexpected status code"
+          description: "Website {{ $labels.instance }} returns HTTP {{ $value }}."

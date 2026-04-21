@@ -11,9 +11,9 @@ docker compose up --build
 Servisi:
 
 - App: `http://localhost:8080`
-- Prometheus: `http://localhost:9090`
-- Grafana: `http://localhost:3000`
-- Alertmanager: `http://localhost:9093`
+- Prometheus: `http://localhost:9091`
+- Grafana: `http://localhost:3001`
+- Alertmanager: `http://localhost:9094`
 
 Grafana pristup:
 
@@ -92,9 +92,9 @@ docker compose logs alertmanager --tail=100
 
 Provera dostupnosti interfejsa:
 
-- Prometheus: `http://SERVER_IP:9090`
-- Grafana: `http://SERVER_IP:3000`
-- Alertmanager: `http://SERVER_IP:9093`
+- Prometheus: `http://SERVER_IP:9091`
+- Grafana: `http://SERVER_IP:3001`
+- Alertmanager: `http://SERVER_IP:9094`
 
 ### 6. Automatsko podizanje posle restarta servera
 
@@ -109,7 +109,7 @@ To je preporučeno za produkcioni server.
 ## Napomene
 
 - Server mora imati izlaz na internet da bi mogao da proverava eksterne sajtove.
-- Ako koristiš firewall, otvori portove `3000`, `9090` i `9093` po potrebi.
+- Ako koristiš firewall, otvori portove `3001`, `9091` i `9094` po potrebi.
 - Ako ne želiš javno izlaganje ovih portova, postavi reverse proxy ili ograniči pristup firewall pravilima.
 
 

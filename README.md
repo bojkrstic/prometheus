@@ -121,3 +121,28 @@ To je preporučeno za produkcioni server.
   - Potvrdi da je novi Telegram token upisan u alertmanager.yml:1
   - Pokreni servis: docker compose up --build -d
   - Proveri stanje: docker compose ps
+
+  Adrese
+
+  - Grafana: http://83-229-82-132.cloud-xip.com:3001
+  - Prometheus: http://83-229-82-132.cloud-xip.com:9091
+  - Alertmanager: http://83-229-82-132.cloud-xip.com:9094
+  - App: http://83-229-82-132.cloud-xip.com:8081
+
+  Grafana login
+
+  - username: admin
+  - password: admin
+
+  Ako se ne otvara spolja
+
+  - proveri firewall/security group na serveru za portove:
+      - 3001
+      - 9091
+      - 9094
+
+  Šta prvo da proveriš
+
+  - otvori Prometheus Targets:
+      - http://83-229-82-132.cloud-xip.com:9091/targets
+  - tu treba da vidiš da su targeti UP
